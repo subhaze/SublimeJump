@@ -44,7 +44,8 @@ What are we gonna do here? (function activated)
 
 class AceJumpCommand(sublime_plugin.TextCommand):
 
-	def run(self, edit):
+	def run(self, edit, key_modifier):
+		self.key_modifier = key_modifier
 		self.settings = sublime.load_settings('AceJump.sublime-settings')
 		# Some base variables
 		# Reference to current view
@@ -141,12 +142,12 @@ class AceJumpCommand(sublime_plugin.TextCommand):
 		region = AceJump_WORDS[index]
 		# Do modified (or not modified) jump!
 
-		if modifier == '$' or modifier == '.':
+		if self.key_modifier == 'jump_to_word_end':
 			# End of word
 			self.view.run_command("jump_to_place", {"start": region.end()})
 			return
 
-		if modifier == '+' or modifier == ',':
+		if self.key_modifier == 'select_word':
 			# Select word
 			self.view.run_command("jump_to_region", {"start": region.begin(), "end": region.end()})
 			return

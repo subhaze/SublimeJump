@@ -1,3 +1,5 @@
 [
-	{ "keys": ["ctrl+;"], "command": "ace_jump" }
+	{ "keys": ["ctrl+;"], "command": "ace_jump", "args": {"key_modifier": "jump_to_word_beginning"} },
+	{ "keys": ["ctrl+alt+;"], "command": "ace_jump", "args":{"key_modifier":"select_word"}},
+	{ "keys": ["ctrl+shift+;"], "command": "ace_jump", "args":{"key_modifier":"jump_to_word_end"}}
 ]
