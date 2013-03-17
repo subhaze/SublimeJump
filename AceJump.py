@@ -45,7 +45,7 @@ What are we gonna do here? (function activated)
 class AceJumpCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit):
-		# Todo: Add settings
+		self.settings = sublime.load_settings('AceJump.sublime-settings')
 		# Some base variables
 		# Reference to current view
 		self.view = self.view.window().active_view()
@@ -104,7 +104,7 @@ class AceJumpCommand(sublime_plugin.TextCommand):
 		sublime.status_message("AceJump: Cancelled")
 
 	def search_and_label_words(self):
-		self.view.run_command('add_hint', {"char": self.char})
+		self.view.run_command('add_hint', {"char": self.char, "selection_regex": self.settings.get('jump_regex')})
 
 	def unlabel_words(self):
 		global AceJump_HAS_LABELS
@@ -153,7 +153,7 @@ class AceJumpCommand(sublime_plugin.TextCommand):
 
 
 class AddHintCommand(sublime_plugin.TextCommand):
-	def run(self, edit, char):
+	def run(self, edit, char, selection_regex):
 		global AceJump_WORDS, AceJump_HAS_LABELS
 		# http://www.sublimetext.com/docs/2/api_reference.html
 		# http://docs.python.org/2/library/re.html
@@ -161,8 +161,6 @@ class AddHintCommand(sublime_plugin.TextCommand):
 		# Searches for all words with given regexp in current view and labels them
 		# Contain words regions, so we can use entire region, or just one position
 		hints = []
-		settings = sublime.load_settings('AceJump.sublime-settings')
-		selection_regex = str(settings.get('jump_regex'))
 
 		self.view = self.view.window().active_view()
 		self.char = char
