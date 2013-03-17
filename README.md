@@ -27,9 +27,9 @@ Input: `<first_character_in_word><searching_word_label>`
 - Type label letter(s) corresponding to your word and press enter
 
 Keyboard Shortcuts:
-- ctrl+;          - place cursor at the beginning of the word
-- ctrl+shift+;    - pace cursor at the end of the word
-- ctrl+alt+;      - selects the word
+- `ctrl+;`          - place cursor at the beginning of the word
+- `ctrl+shift+;`    - pace cursor at the end of the word
+- `ctrl+alt+;`      - selects the word
 
 How to install
 --------------
