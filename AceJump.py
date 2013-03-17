@@ -7,9 +7,6 @@ from re import search, match, escape
 hints_letters = ascii_uppercase
 hints_letters_length = len(hints_letters)
 
-selection_regex = r'(\b\w+|)(?=%s)((\B\w+)|\w+)'
-# selection_regex = r'\b%s\S*'
-
 
 def number_to_letters(number):
 	# Like in excel columns
@@ -164,6 +161,9 @@ class AddHintCommand(sublime_plugin.TextCommand):
 		# Searches for all words with given regexp in current view and labels them
 		# Contain words regions, so we can use entire region, or just one position
 		hints = []
+		settings = sublime.load_settings('AceJump.sublime-settings')
+		selection_regex = str(settings.get('jump_regex'))
+
 		self.view = self.view.window().active_view()
 		self.char = char
 		# Find words in this region
