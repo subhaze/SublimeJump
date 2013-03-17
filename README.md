@@ -1,7 +1,7 @@
 AceJump
 =======
 
-Plugin for Sublime Text 2
+Plugin for Sublime Text 2 and Sublime Text 3
 
 It's inspired by AceJump for JetBrains WebStorm (inspired by emacs AceJump, which is inspired by EasyMotion for Vim)
 
