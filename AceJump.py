@@ -104,7 +104,13 @@ class AceJumpCommand(sublime_plugin.TextCommand):
 		sublime.status_message("AceJump: Cancelled")
 
 	def search_and_label_words(self):
-		self.view.run_command('add_hint', {"char": self.char, "selection_regex": self.settings.get('jump_regex')})
+		self.view.run_command('add_hint',
+			{
+				"char": self.char,
+				"selection_regex": self.settings.get('jump_regex'),
+				"highlight_match": self.settings.get('highlight_match')
+			}
+		)
 
 	def unlabel_words(self):
 		global AceJump_HAS_LABELS
@@ -153,7 +159,7 @@ class AceJumpCommand(sublime_plugin.TextCommand):
 
 
 class AddHintCommand(sublime_plugin.TextCommand):
-	def run(self, edit, char, selection_regex):
+	def run(self, edit, char, selection_regex, highlight_match):
 		global AceJump_WORDS, AceJump_HAS_LABELS
 		# http://www.sublimetext.com/docs/2/api_reference.html
 		# http://docs.python.org/2/library/re.html
@@ -210,7 +216,10 @@ class AddHintCommand(sublime_plugin.TextCommand):
 		AceJump_HAS_LABELS = True
 		# Which scope use here, string?
 		# comment, string
-		self.view.add_regions("AceJumpWords", AceJump_WORDS, "comment") # Will be: Enable with settings
+
+		if(highlight_match):
+			self.view.add_regions("AceJumpWords", AceJump_WORDS, "comment")
+
 		self.view.add_regions("AceJumpHints", hints, "string")
 		self.view.set_status(
 			"AceJump", "Found %d match%s for character %s"
