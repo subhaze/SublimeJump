@@ -152,6 +152,11 @@ class AceJumpCommand(sublime_plugin.TextCommand):
 			self.view.run_command("jump_to_region", {"start": region.begin(), "end": region.end()})
 			return
 
+		if self.key_modifier == 'select_all_words':
+			# Select word
+			self.view.run_command("jump_to_regions", {"start": region.begin(), "end": region.end()})
+			return
+
 		sublime.status_message(
 			"Search key: %s, go to: %s%s"
 			% (self.char, label, "" if not modifier else ", no such modifier, just jumping")
@@ -240,6 +245,24 @@ class JumpToRegionCommand(sublime_plugin.TextCommand):
 
 		self.view.sel().clear()
 		self.view.sel().add(region)
+		self.view.show(region)
+
+
+class JumpToRegionsCommand(sublime_plugin.TextCommand):
+
+	def run(self, edit, start, end):
+		# Checking? try/except
+		region = sublime.Region(int(start), int(end))
+
+		if not region:
+			print("JumpToRegion: Bad region!")
+			return
+
+		self.view.sel().clear()
+		word_to_find = self.view.substr(region)
+		words = self.view.find_all(word_to_find)
+		for word in words:
+			self.view.sel().add(word)
 		self.view.show(region)
 
 

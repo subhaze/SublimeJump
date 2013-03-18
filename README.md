@@ -30,6 +30,7 @@ Keyboard Shortcuts:
 - `ctrl+;`          - place cursor at the beginning of the word
 - `ctrl+shift+;`    - pace cursor at the end of the word
 - `ctrl+alt+;`      - selects the word
+- `ctrl+alt+g+;`    - selects all matching words
 
 How to install
 --------------
