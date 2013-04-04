@@ -32,8 +32,8 @@ Keyboard Shortcuts
 How To Use
 ---
 
-* Type a letter (*case sensitive*) within the word you wish to jump to.
-* Type the label (*case insensitive*) that appears with in the word you wish to jump to.
+* Type a letter *(case sensitive)* within the word you wish to jump to.
+* Type the label *(case insensitive)* that appears with in the word you wish to jump to.
 * Hit enter and you're there.
 
 
