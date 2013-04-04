@@ -1,6 +1,6 @@
 [
-	{ "keys": ["ctrl+;"], "command": "ace_jump", "args": {"key_modifier": "jump_to_word_beginning"} },
-	{ "keys": ["ctrl+alt+;"], "command": "ace_jump", "args":{"key_modifier":"select_word"}},
-	{ "keys": ["ctrl+alt+g+;"], "command": "ace_jump", "args":{"key_modifier":"select_all_words"}},
-	{ "keys": ["ctrl+shift+;"], "command": "ace_jump", "args":{"key_modifier":"jump_to_word_end"}}
+	{ "keys": ["ctrl+;", "ctrl+;"], "command": "sublime_jump", "args": {"key_modifier": "jump_to_word_beginning"} },
+	{ "keys": ["ctrl+;", "ctrl+d"], "command": "sublime_jump", "args":{"key_modifier":"select_word"}},
+	{ "keys": ["ctrl+;", "ctrl+g"], "command": "sublime_jump", "args":{"key_modifier":"select_all_words"}},
+	{ "keys": ["ctrl+shift+;", "ctrl+shift+;"], "command": "sublime_jump", "args":{"key_modifier":"jump_to_word_end"}}
 ]

@@ -12,17 +12,17 @@
                 "children":
                 [
                     {
-                        "caption": "AceJump",
+                        "caption": "SublimeJump",
                         "children":
                         [
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/AceJump/AceJump.sublime-settings"},
+                                "args": {"file": "${packages}/SublimeJump/SublimeJump.sublime-settings"},
                                 "caption": "Settings – Default"
                             },
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/User/AceJump.sublime-settings"},
+                                "args": {"file": "${packages}/User/SublimeJump.sublime-settings"},
                                 "caption": "Settings – User"
                             }
                         ]
