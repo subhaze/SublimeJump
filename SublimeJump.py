@@ -28,7 +28,7 @@ def letters_to_number(string):
 		number += (int(string[i], 36) - 9) * pow(base, i)
 	return number
 
-# Will contain all words pasujace to selection_regex % self.char
+# Will contain all words matched to selection_regex % self.char
 SublimeJump_WORDS = []
 # Tells if labels are shown
 SublimeJump_HAS_LABELS = False
@@ -53,12 +53,12 @@ class SublimeJumpCommand(sublime_plugin.TextCommand):
 
 		# Character we are looking for
 		self.char = ""
-		# Target label (and modifer)
+		# Target label (and modifier)
 		self.target = ""
 
 		# Edit object for labels
 		self.edit = edit
-		self.view.set_status("SublimeJump", "Seach for character")
+		self.view.set_status("SublimeJump", "Search for character")
 		# Is there a moar awesome way?
 
 		self.view.window().show_input_panel(
@@ -92,17 +92,17 @@ class SublimeJumpCommand(sublime_plugin.TextCommand):
 				self.search_and_label_words()
 
 		if len(command) > 1:
-			# Label (and modifers)
+			# Label (and modifier)
 			self.target = command[1:]
 			self.view.set_status("SublimeJump", "Target: %s" % self.target)
 
 	def nope(self):
-		# User cancelled input
+		# User canceled input
 		#if SublimeJump_HAS_LABELS:
 		self.unlabel_words()
 		self.view.erase_status("SublimeJump")
 		# if caller != input:
-		sublime.status_message("SublimeJump: Cancelled")
+		sublime.status_message("SublimeJump: Canceled")
 
 	def search_and_label_words(self):
 		self.view.run_command('add_hint',
