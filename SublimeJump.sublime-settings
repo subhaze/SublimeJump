@@ -1,0 +1,4 @@
+{
+	"jump_regex":"(\\b\\w+|)(?=%s)((\\B\\w+)|\\w+)",
+	"highlight_match": true
+}
