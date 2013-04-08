@@ -140,8 +140,7 @@ class SublimeJumpCommand(sublime_plugin.TextCommand):
 		# Convert label to number, and get its region
 		index = letters_to_number(label) - 1
 		region = SublimeJump_WORDS[index]
-		# Do modified (or not modified) jump!
-		print(self.key_modifier)
+
 		if self.key_modifier == 'jump_to_word_end':
 			# End of word
 			self.view.run_command("jump_to_place", {"start": region.end()})
@@ -199,7 +198,7 @@ class AddHintCommand(sublime_plugin.TextCommand):
 				# Don't replace line ending with label
 				if label_length > 1 and match(r'$', self.view.substr(word.begin() + label_length - 1)):
 					replace_region = sublime.Region(word.begin(), word.begin() + 1)
-					print("not replacing line ending", label)
+					#print("not replacing line ending", label)
 				else:
 					replace_region = hint_region
 
@@ -208,12 +207,12 @@ class AddHintCommand(sublime_plugin.TextCommand):
 				index += 1
 				# print(index, label)
 			else:
-				print("no words left", next_search, last_search)
+				#print("no words left", next_search, last_search)
 				break
 
 			next_search = word.end()
 
-		print("no search area left", next_search, last_search)
+		# print("no search area left", next_search, last_search)
 		matches = len(SublimeJump_WORDS)
 
 		if not matches:
@@ -236,12 +235,12 @@ class AddHintCommand(sublime_plugin.TextCommand):
 class JumpToRegionCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit, start, end):
-		print('SELECT REGION COMMAND')
+		# print('SELECT REGION COMMAND')
 		# Checking? try/except
 		region = sublime.Region(int(start), int(end))
 
 		if not region:
-			print("JumpToRegion: Bad region!")
+			# print("JumpToRegion: Bad region!")
 			return
 
 		self.view.sel().clear()
@@ -253,11 +252,11 @@ class JumpToRegionsCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit, start, end):
 		# Checking? try/except
-		print('SELECT REGIONSSSS COMMAND')
+		# print('SELECT REGIONSSSS COMMAND')
 		region = sublime.Region(int(start), int(end))
 
 		if not region:
-			print("JumpToRegion: Bad region!")
+			# print("JumpToRegion: Bad region!")
 			return
 
 		self.view.sel().clear()
